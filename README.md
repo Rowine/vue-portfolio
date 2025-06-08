@@ -39,6 +39,15 @@ npm install
 npm run dev
 ```
 
+## Login Credentials
+
+The application uses hardcoded credentials for demonstration purposes:
+
+```
+Username: admin
+Password: password123
+```
+
 ## Development Tools
 
 For the best development experience, we recommend:
