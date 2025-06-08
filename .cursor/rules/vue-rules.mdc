@@ -1,0 +1,130 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+
+# 🧭 Cursor Rules – Vue 3 Project (JavaScript)
+
+This document defines the coding standards and project structure rules for all contributors. The project stack includes:
+
+- [Vue 3](https://vuejs.org/)
+- [Pinia](https://pinia.vuejs.org/)
+- [Vue Router](https://router.vuejs.org/)
+- [Naive UI](https://www.naiveui.com/)
+- [Vite](https://vitejs.dev/) (assumed)
+
+---
+
+## 🧱 Project Structure
+
+```
+src/
+├── assets/          # Static files (images, fonts, etc.)
+├── components/      # Reusable UI components
+├── composables/     # Composable functions (like useX)
+├── pages/           # Route-level components
+├── router/          # Vue Router setup
+├── stores/          # Pinia stores
+├── styles/          # Global styles (e.g., tailwind, variables)
+├── utils/           # Utility functions
+├── App.vue
+├── main.js
+```
+
+---
+
+## 📦 Naming Conventions
+
+- **File names**: `PascalCase.vue` for components, `kebab-case.js` for utilities
+- **Component names**: Always use `PascalCase` in templates
+- **Store naming**: `useXStore` (e.g. `useUserStore`)
+- **Route components**: Located in `pages/` and named by view (e.g., `HomePage.vue`)
+
+---
+
+## 🎨 Naive UI Rules
+
+- Always wrap `n-message`, `n-dialog`, and `n-notification` providers in `App.vue`.
+- Use `n-form` with validation schema via `rules` prop.
+- Prefer `n-grid` and `n-space` for layout consistency.
+
+---
+
+## 🧠 Pinia Rules
+
+- Store files live in `stores/`
+- Each store should:
+  - Use `defineStore`
+  - Export a `useXStore` function
+  - Contain `state`, `getters`, and `actions`
+- Use `persistedstate` if needed via plugin
+- Don’t mutate the state outside of actions
+
+```js
+// ✅ Correct usage
+const userStore = useUserStore()
+userStore.setUser(data)
+```
+
+---
+
+## 🧭 Vue Router Rules
+
+- Define routes in `router/index.js`
+- Use **lazy loading** for route components
+- All route components should live in `pages/`
+- Use **named routes** for navigation
+
+```js
+{
+  path: '/about',
+  name: 'About',
+  component: () => import('@/pages/AboutPage.vue'),
+}
+```
+
+---
+
+## 💡 Vue Development Rules (General)
+
+- Use `script setup` for all components
+- Use `defineProps` and `defineEmits` over options API
+- Use `ref()` and `reactive()` from `vue` — avoid `this.$refs`
+- Avoid logic in templates; keep templates clean
+- Use `v-model` with `modelValue` pattern
+- Always clean up watchers and intervals in `onUnmounted`
+- Avoid global event listeners unless necessary
+
+---
+
+## 📘 Example Store (JavaScript)
+
+```js
+// stores/useUserStore.js
+import { defineStore } from 'pinia'
+
+export const useUserStore = defineStore('user', {
+  state: () => ({
+    name: '',
+    email: ''
+  }),
+  actions: {
+    setUser(data) {
+      this.name = data.name
+      this.email = data.email
+    }
+  }
+})
+```
+
+---
+
+## 🧼 Miscellaneous
+
+- Prefer `@/` alias for imports
+- Avoid deep component nesting (> 3 levels)
+- Use `.env` files for config, not hardcoded values
+- Document complex composables with comments
+
+---
