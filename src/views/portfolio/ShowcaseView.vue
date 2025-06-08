@@ -14,7 +14,7 @@
         >
           <div class="work-image-container">
             <img
-              :src="project.image"
+              :src="getImagePath(project.image)"
               :alt="project.title"
               class="work-image"
             />
@@ -70,6 +70,14 @@ import {
   NIcon,
 } from 'naive-ui'
 import { World, BrandGithub } from '@vicons/tabler'
+
+// Function to handle image paths
+const getImagePath = (imagePath) => {
+  if (import.meta.env.DEV) {
+    return imagePath
+  }
+  return `${import.meta.env.BASE_URL}${imagePath.startsWith('/') ? imagePath.slice(1) : imagePath}`
+}
 
 // Project data
 const projects = [

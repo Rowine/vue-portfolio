@@ -1,29 +1,50 @@
-# vue-portfolio
+# Vue Portfolio
 
-This template should help get you started developing with Vue 3 in Vite.
+A modern portfolio website built with Vue 3, featuring:
 
-## Recommended IDE Setup
+- Vue 3 with Composition API
+- Vite for lightning-fast development
+- Three.js for 3D graphics
+- Naive UI component library
+- Pinia for state management
+- Vue Router for navigation
+- TypeScript support
+- Fully responsive design
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+## Prerequisites
 
-## Customize configuration
+Before you begin, ensure you have the following installed:
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- [Git](https://git-scm.com/)
 
-## Project Setup
+## Getting Started
+
+1. Clone the repository:
+
+```sh
+git clone https://github.com/Rowine/vue-portfolio.git
+cd vue-portfolio
+```
+
+2. Install dependencies:
 
 ```sh
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+3. Start the development server:
 
 ```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+## Development Tools
 
-```sh
-npm run build
-```
+For the best development experience, we recommend:
+
+- [VSCode](https://code.visualstudio.com/) as your IDE
+
+## License
+
+[MIT](LICENSE)

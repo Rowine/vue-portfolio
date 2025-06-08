@@ -22,6 +22,14 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 
+// Function to handle asset paths
+const getAssetPath = (path) => {
+  if (import.meta.env.DEV) {
+    return path
+  }
+  return `${import.meta.env.BASE_URL}${path.startsWith('/') ? path.slice(1) : path}`
+}
+
 const container = ref(null)
 let mixer
 let clock
@@ -99,13 +107,13 @@ const init = () => {
 
   // Set up DRACO loader
   const dracoLoader = new DRACOLoader()
-  dracoLoader.setDecoderPath('/draco/')
+  dracoLoader.setDecoderPath(getAssetPath('/draco/'))
 
   // Load model
   const loader = new GLTFLoader()
   loader.setDRACOLoader(dracoLoader)
   
-  loader.load('/models/LittlestTokyo.glb', (gltf) => {
+  loader.load(getAssetPath('/models/LittlestTokyo.glb'), (gltf) => {
     const model = gltf.scene
     model.position.set(1, 1, 0)
     model.scale.set(0.01, 0.01, 0.01)

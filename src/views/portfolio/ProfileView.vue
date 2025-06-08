@@ -8,7 +8,7 @@
             <n-avatar
               round
               size="large"
-              src="/profile.jpg"
+              :src="profileImageSrc"
               class="profile-avatar"
             />
             <div class="profile-title">
@@ -124,6 +124,7 @@ import {
   NA,
   NIcon
 } from 'naive-ui'
+import { computed } from 'vue'
 import {
   BrandGithub,
   BrandInstagram,
@@ -133,6 +134,16 @@ import {
   MapPin,
   World
 } from '@vicons/tabler'
+
+// Function to handle image paths
+const getImagePath = (imagePath) => {
+  if (import.meta.env.DEV) {
+    return imagePath
+  }
+  return `${import.meta.env.BASE_URL}${imagePath.startsWith('/') ? imagePath.slice(1) : imagePath}`
+}
+
+const profileImageSrc = computed(() => getImagePath('/profile.jpg'))
 
 const socialLinks = [
   { 
